@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @comment = Comment.new
+    @exif = EXIFR::JPEG.new(@photo.file.current_path)
   end
 
   # GET /photos/new

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= hi "test" %>
 <p>
   <strong>Name:</strong>
   <%= @photo.name %>
@@ -11,6 +11,39 @@
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>
 <%= form_for(@comment) do |f| %>
+
+    <table class="table table-striped">
+      
+      <tr>
+        <td>wysokosc</td>
+        <td><%= @exif.height%></td>
+      </tr>
+      
+      <tr>
+        <td>szerokosc</td>
+        <td><%= @exif.width%></td>
+      </tr>
+      
+      <tr>
+        <td>aparat</td>
+        <td><%= @exif.model%></td>
+      </tr>
+      <% if  @exif.gps %>
+        <tr>
+          <td>szerokosc</td>
+          <td><%= @exif.gps.latitude%></td>
+        </tr>
+
+        <tr>
+          <td>dlugosc</td>
+          <td><%= @exif.gps.longitude%></td>
+        </tr>
+      <% end%>
+    </table>
+
+    <% if  @exif.gps %>
+      <%= raw(google_maps(@exif.gps.latitude, @exif.gps.longitude))%>
+    <% end%>
 
   <div class="form-group">
     <%= f.label :title %><br>
@@ -37,6 +70,9 @@
     <div class="edit-comment">
       <%= link_to "usun", comment_path(comment), method: "delete"%>
     </div>
+
   </div>
+
+
 <%end%>
     
