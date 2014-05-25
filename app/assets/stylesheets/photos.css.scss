@@ -1,0 +1,28 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ .box-comment {
+   width: 300px;
+   margin-bottom: 15px;
+   border: solid 1px;
+   border-radius: 5px;
+   
+  .title-comment{
+    background-color: #4198d9;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+   .body-comment{
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+   }
+   .edit-comment{
+     text-align: right;
+
+     a {
+       color: red;
+       font-size: 9px;
+     }
+   }
+ }

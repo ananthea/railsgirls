@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @photo.name %>
+</p>
+<p>
+  <strong>File:</strong>
+  <%= image_tag @photo.file.url %>
+</p>
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>
+<%= form_for(@comment) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    
+  </div>
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>  
+
+<%Comment.all.each do |comment|%>
+  <div class="box-comment row">
+    <div class="title-comment"> 
+      <%=comment.title %><br>
+    </div>
+    <div class="body-comment">
+      <%=comment.body %><br>
+    </div>
+    <div class="edit-comment">
+      <%= link_to "usun", comment_path(comment), method: "delete"%>
+    </div>
+  </div>
+<%end%>
+    
